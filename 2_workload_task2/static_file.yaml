@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-file-app
+  labels:
+    app: static-file
+spec:
+  volumes:
+  - name: dir
+    hostPath:
+      path: /home/vivek/infracloud
+  containers:
+  - name: static-file-app
+    image: busybox:latest
+    command: ['sh', '-c', 'cat /home/vivek/infracloud/file.txt; sleep 10; rm -rf /home/vivek/infracloud/file.txt; sleep 6;']
+    volumeMounts:
+    - name: dir
+      mountPath: /home/vivek/infracloud
+    readinessProbe:
+      exec:
+        command:
+        - cat
+        - /home/vivek/infracloud/file.txt
+      initialDelaySeconds: 5
+      periodSeconds: 4
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /home/vivek/infracloud/file.txt
+      initialDelaySeconds: 5
+      periodSeconds: 2
+  initContainers:
+  - name: static-file-creator
+    image: busybox:latest
+    command: ['sh', '-c', 'echo "static file created" >> /home/vivek/infracloud/file.txt']
+    volumeMounts:
+    - name: dir
+      mountPath: /home/vivek/infracloud
+  restartPolicy: Always
