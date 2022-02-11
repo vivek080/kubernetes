@@ -1,0 +1,18 @@
+1. get, list, watch namespaces
+2. False
+3. Can use any storage medium
+   Can provide protobuf support
+   Can provide any custom subresource
+   Can implement graceful deletion as Kubernetes does for pods
+4. CRD are best for small, in-house configuration objects without any corresponding controller logic
+   if the there is no version conversion taking place then we can use CRD as they is no need to code the aggregated API.
+5. Resources served by custom API Servers are registered with kube-apiserver
+6. True
+7. 1100
+8. Delegating to kube-apiserver via SubjectAccessReviews
+   Authorization cache in Custom API Server
+9. Only once for internal version
+10. 4
+11. 1
+12. JSON & protobuf tags are missing from external types.go
+    types.go for internal versions is in pkg/apis/group-name/types.go and for external versions in pkg/apis/group-name/version/types.go

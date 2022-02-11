@@ -1,0 +1,11 @@
+1. apiextensions.k8s.io/v1beta1
+2. stepList
+3. status
+   scale
+5. Replica json path needs to be defined in CRD
+6. only status & replicas of the resources
+7. controller-runtime
+8. true
+9. RESTMapper is not used, so developer needs to provide GVR
+   It only uses unstructured.Unstructured go type
+10. types.go in pkg/apis/infracloud.io/v1beta1

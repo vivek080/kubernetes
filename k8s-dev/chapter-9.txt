@@ -1,0 +1,5 @@
+1. v1
+2. version is specified in the endpoint e.g. /convert/v1beta1/pizza, /convert/v1alpha1/pizza etc
+3. False
+4. Mutating -> Validating
+5. Mutating webhooks sequentially, validating webhooks parallely
