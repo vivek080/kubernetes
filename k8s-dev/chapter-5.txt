@@ -1,0 +1,9 @@
+1. vendor/k8s.io/code-generator
+2. package's doc.go
+3. directly above the type / package line
+4. It must be added to first-comment-block
+5. Optional, only needed if Go parent package name doesn't match group name
+6. second comment block so that those can be skipped from API documentation
+7. generate a namespaced client
+8. false
+9. we need to add +genclient:nostatus so that the updateStatus method is not generated
